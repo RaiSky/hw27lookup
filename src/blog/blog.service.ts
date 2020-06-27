@@ -18,7 +18,7 @@ export class BlogService {
         return await this.userModel.aggregate([
             {
                 $lookup: {
-                    from: 'Сars',
+                    from: 'cars',
                     localField: '_id',
                     foreignField: 'userId',
                     as: 'cars'
@@ -37,7 +37,7 @@ export class BlogService {
             },
             {
                 $lookup: {
-                    from: 'Cars',
+                    from: 'cars',
                     localField: '_id',
                     foreignField: 'userId',
                     as: 'cars'
