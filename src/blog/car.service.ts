@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Car } from './interfaces/car.interface';
 import {CreateCarDTO} from './dto/create-car.dto';
 
+
 @Injectable()
 export class CarService {
 
@@ -22,8 +23,8 @@ export class CarService {
     }
 
     async addCar(createCarDTO: CreateCarDTO): Promise<Car> {
-        const newPost = await this.carModel(createCarDTO);
-        return newPost.save();
+        const newCar = await this.carModel.create(createCarDTO);      
+        return newCar.save();
     }   
 
 }

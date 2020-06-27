@@ -2,6 +2,7 @@ import { Controller, Get, Res, HttpStatus, Param, NotFoundException, Post, Body,
 import { ValidateObjectId } from '../shared/pipes/validate-object-id.pipes';
 import {CarService} from './car.service';
 import { CreateCarDTO } from './dto/create-car.dto';
+import * as mongoose from 'mongoose'
 
 
 @Controller('cars')
@@ -16,6 +17,9 @@ export class CarController {
     @Post('/car')
     async addCar(@Res() res, @Body() createCarDTO: CreateCarDTO) {
         const newCar = await this.carService.addCar(createCarDTO);
+        const userId = new mongoose.Types.ObjectId(createCarDTO.userId);
+        console.log(userId);
         return res.status(HttpStatus.OK).json(newCar)
+        
     }
 }

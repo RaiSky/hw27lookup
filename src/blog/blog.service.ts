@@ -18,7 +18,7 @@ export class BlogService {
         return await this.userModel.aggregate([
             {
                 $lookup: {
-                    from: 'Cars',
+                    from: 'Сars',
                     localField: '_id',
                     foreignField: 'userId',
                     as: 'cars'
@@ -37,7 +37,7 @@ export class BlogService {
             },
             {
                 $lookup: {
-                    from: 'carmodels',
+                    from: 'Cars',
                     localField: '_id',
                     foreignField: 'userId',
                     as: 'cars'
@@ -47,7 +47,7 @@ export class BlogService {
     }
 
     async addUser(createPostDTO: CreatePostDTO): Promise<User> {
-        const newPost = await this.userModel(createPostDTO);
+        const newPost = await this.userModel(createPostDTO);        
         return newPost.save();
     }     
 
